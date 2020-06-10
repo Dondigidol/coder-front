@@ -11,6 +11,8 @@ const BarcodeMenu = (props) => {
             id="width"
             className="form-control m-2"
             defaultValue="2"
+            min="1"
+            required
             onChange={props.inputChangeMethod()}
           />
         </div>
@@ -39,7 +41,14 @@ const BarcodeMenu = (props) => {
           />
         </div>
         <div className="form-group d-block">
-          <button className="btn btn-success ml-2 mt-4">скачать</button>
+          <a
+            className="btn btn-success ml-2 mt-4"
+            onClick={props.downloadBarcode()}
+            href={props.imgSrc}
+            download={props.imgSrc}
+          >
+            скачать
+          </a>
         </div>
       </form>
     </div>

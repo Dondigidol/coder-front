@@ -47,7 +47,7 @@ class Barcode extends React.Component {
   }
 
   render() {
-    return <img alt="barcode" id="barcode"></img>;
+    return <img ref={this.props.imgRef} alt="barcode" id="barcode"></img>;
   }
 }
 export default Barcode;
