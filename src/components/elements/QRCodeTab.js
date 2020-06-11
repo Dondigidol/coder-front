@@ -10,8 +10,7 @@ class QRCodeTab extends React.Component {
       size: 128,
     };
 
-    this.qrcode = QRCode();
-    //this.qrcode = React.createRef();
+    this.qrcodeContainer = React.createRef();
   }
 
   onInputChange = (e) => {
@@ -20,21 +19,28 @@ class QRCodeTab extends React.Component {
     });
   };
 
-  downloadQRcode = (e) => {
-    e.preventDefault();
-    //var node = this.qrcode.current;
-    console.log(this.qrcode);
+  downloadQRcode = () => {
+    var canvas = document.getElementById("qrcode");
+    var data = canvas.toDataURL();
+    var link = document.createElement("a");
+    link.download = this.props.value + ".png";
+    link.href = data;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   render() {
     return (
-      <div className="text-center">
+      <div>
         <QRCodeMenu
           inputChangeMethod={(e) => this.onInputChange}
-          downloadQRcode={(e) => this.downloadQRcode}
+          downloadQRcode={() => this.downloadQRcode}
         />
+
         {this.props.value && (
           <QRCode
+            id="qrcode"
             value={this.props.value}
             size={this.state.size}
             className="m-3"

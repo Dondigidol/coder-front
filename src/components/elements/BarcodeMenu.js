@@ -2,8 +2,8 @@ import React from "react";
 
 const BarcodeMenu = (props) => {
   return (
-    <div className="align-items-center">
-      <form className="form-inline ">
+    <div className="container">
+      <form className="form-inline col-8 offset-2">
         <div className="form-group d-block">
           <label htmlFor="width">ширина линии</label>
           <input
@@ -41,14 +41,20 @@ const BarcodeMenu = (props) => {
           />
         </div>
         <div className="form-group d-block">
-          <a
+          <button
             className="btn btn-success ml-2 mt-4"
             onClick={props.downloadBarcode()}
-            href={props.imgSrc}
-            download={props.imgSrc}
           >
             скачать
-          </a>
+          </button>
+        </div>
+        <div className="form-group d-block">
+          <button
+            className="btn btn-success ml-2 mt-4"
+            onClick={props.printBarcode()}
+          >
+            печать
+          </button>
         </div>
       </form>
     </div>
