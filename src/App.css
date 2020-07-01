@@ -13,6 +13,26 @@
   }
 }
 
+@media print {
+  body {
+    visibility: hidden;
+  }
+
+  #barcode {
+    visibility: visible;
+    position: absolute;
+    top: 10mm;
+    left: 10mm;
+  }
+
+  #qrcode {
+    visibility: visible;
+    position: absolute;
+    top: 10mm;
+    left: 10mm;
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

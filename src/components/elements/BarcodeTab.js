@@ -42,7 +42,10 @@ class BarcodeTab extends React.Component {
 
   printBarcode = (e) => {
     e.preventDefault();
-    console.log("printing...");
+    var canvas = document.getElementById("barcode");
+    if (canvas) {
+      window.print();
+    }
   };
 
   render() {

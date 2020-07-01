@@ -19,15 +19,27 @@ class QRCodeTab extends React.Component {
     });
   };
 
-  downloadQRcode = () => {
+  downloadQRcode = (e) => {
+    e.preventDefault();
     var canvas = document.getElementById("qrcode");
-    var data = canvas.toDataURL();
-    var link = document.createElement("a");
-    link.download = this.props.value + ".png";
-    link.href = data;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+
+    if (canvas) {
+      var data = canvas.toDataURL();
+      var link = document.createElement("a");
+      link.download = this.props.value + ".png";
+      link.href = data;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  printQRcode = (e) => {
+    e.preventDefault();
+    var canvas = document.getElementById("qrcode");
+    if (canvas) {
+      window.print();
+    }
   };
 
   render() {
@@ -35,7 +47,8 @@ class QRCodeTab extends React.Component {
       <div>
         <QRCodeMenu
           inputChangeMethod={(e) => this.onInputChange}
-          downloadQRcode={() => this.downloadQRcode}
+          downloadQRcode={(e) => this.downloadQRcode}
+          printQRcode={(e) => this.printQRcode}
         />
 
         {this.props.value && (

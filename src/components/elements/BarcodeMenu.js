@@ -3,8 +3,8 @@ import React from "react";
 const BarcodeMenu = (props) => {
   return (
     <div className="container">
-      <form className="form-inline col-8 offset-2">
-        <div className="form-group d-block">
+      <form className="row justify-content-center">
+        <div className="form-group p-1">
           <label htmlFor="width">ширина линии</label>
           <input
             type="number"
@@ -17,7 +17,7 @@ const BarcodeMenu = (props) => {
           />
         </div>
 
-        <div className="form-group d-block">
+        <div className="form-group p-1">
           <label htmlFor="height">высота штрихкода</label>
           <input
             type="number"
@@ -28,29 +28,27 @@ const BarcodeMenu = (props) => {
           />
         </div>
 
-        <div className="form-group d-block">
-          <label htmlFor="signature" className="mb-2">
-            подпись
-          </label>
+        <div className="form-group p-1">
+          <label htmlFor="signature">подпись</label>
+          <br />
           <input
             type="checkbox"
-            className="form-check-input mb-4 m-2"
+            className="form-check-input ml-n2 mt-3"
             id="signature"
             defaultChecked
             onChange={props.checkChangeMethod()}
           />
         </div>
-        <div className="form-group d-block">
+
+        <div className="form-group p-1 form-inline">
           <button
-            className="btn btn-success ml-2 mt-4"
+            className="btn btn-success ml-1 mb-n4 mt-1"
             onClick={props.downloadBarcode()}
           >
             скачать
           </button>
-        </div>
-        <div className="form-group d-block">
           <button
-            className="btn btn-success ml-2 mt-4"
+            className="btn btn-success ml-1 mb-n4 mt-1"
             onClick={props.printBarcode()}
           >
             печать
