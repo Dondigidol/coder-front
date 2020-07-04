@@ -2,15 +2,28 @@ import React from "react";
 import { Tabs, Tab } from "react-bootstrap";
 import BarcodeTab from "../elements/BarcodeTab";
 import QRCodeTab from "../elements/QRCodeTab";
+import classnames from "classnames";
 
 class MainPage extends React.Component {
   state = {
     sourceValue: "",
+    error: undefined,
   };
 
   valueChange = (e) => {
+    var value = e.target.value;
+    var errorValue = undefined;
+    var itemValue = undefined;
+    var regex = /[а-яА-ЯЁё]/;
+    if (value.match(regex) !== null) {
+      errorValue = "Текст не должен содержать кирилицу";
+    } else {
+      itemValue = value;
+    }
+
     this.setState({
-      [e.target.id]: e.target.value,
+      [e.target.id]: itemValue,
+      error: errorValue,
     });
   };
 
@@ -21,10 +34,15 @@ class MainPage extends React.Component {
           <span>Что вы хотите закодировать?</span>
           <input
             type="text"
-            className="form-control"
+            className={classnames("form-control", {
+              "is-invalid": this.state.error,
+            })}
             id="sourceValue"
             onChange={this.valueChange}
           />
+          {this.state.error && (
+            <div className="alert-danger">{this.state.error}</div>
+          )}
         </form>
         <Tabs transition={false} className="justify-content-center mt-3">
           <Tab eventKey="barcode" title="Barcode">

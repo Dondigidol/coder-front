@@ -5,7 +5,7 @@ const BarcodeMenu = (props) => {
     <div className="container">
       <form className="row justify-content-center">
         <div className="form-group p-1">
-          <label htmlFor="height">размер</label>
+          <label htmlFor="height">размер (высота и ширина в пикселях)</label>
           <input
             type="number"
             id="size"
